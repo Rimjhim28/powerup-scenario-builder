@@ -457,8 +457,6 @@ function init() {
                 deletedQuestions.shift();
             } else {
                 lastQuestionID++;
-                console.log("last question ID");
-                console.log(lastQuestionID);
             }
 
             fields = [{
