@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flow Builder</title>
+  <meta name="description" content="" />
+
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body onload="init()">
+
+  <div id="sample">
+    Flow Builder
+    <div id="diagramDiv"></div>
+    <button id="SaveButton" onclick="save()">Save</button>
+    <button onclick="layout()">Do Layout</button>
+    <!-- <button onclick="load()">Load</button> -->
+    <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
+    <input type='file' id='fileinput'>
+    <br />
+    <textarea id="savedModelDiv" style="display: none"></textarea>
+  </div>
+
+  <script src="library/go.js"></script>
+  <script src="js/diagram.js"></script>
+</body>
+
+</html>
