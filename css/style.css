@@ -1,11 +1,9 @@
     @import url('https://fonts.googleapis.com/css?family=Lato');
-   
     body {
       font-family: 'Lato', Arial, Helvetica, sans-serif;
     }
 
-    @media only screen and (max-width: 480px) {
-    }
+    @media only screen and (max-width: 480px) {}
 
     #diagramDiv {
       width: 100%;
@@ -54,6 +52,17 @@
       padding-right: 5px;
       z-index: 1;
       transition: all .2s ease-out;
+    }
+
+    @-moz-document url-prefix() {
+      .inputlabel {
+        left: -212px !important;
+        padding-bottom: 0px;
+        top: 1px;
+      }
+      .button {
+        padding-bottom: 1px;
+      }
     }
 
     .button:hover {
