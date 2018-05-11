@@ -1,10 +1,11 @@
     @import url('https://fonts.googleapis.com/css?family=Lato');
-    div,
-    select {
+   
+    body {
       font-family: 'Lato', Arial, Helvetica, sans-serif;
     }
 
-    @media only screen and (max-width: 1024px) {}
+    @media only screen and (max-width: 480px) {
+    }
 
     #diagramDiv {
       width: 100%;
@@ -17,7 +18,7 @@
     }
 
     #title {
-      position: absolute;
+      position: fixed;
       background-color: #fff;
       z-index: 100000000;
       left: 10px;
@@ -39,24 +40,46 @@
       font-size: .9em;
       border-radius: 0;
       background-color: transparent;
-      border-width: 1px;
+      border: 1px solid black;
+      transition: all .2s ease-in-out;
     }
 
-    .button [type=file] {
-      cursor: pointer;
-      display: block;
-      font-size: 999px;
-      filter: alpha(opacity=0);
-      min-height: 100%;
-      min-width: 100%;
+    .inputlabel {
+      position: relative;
+      left: -240px;
+      top: 1px;
+      border: 1px solid black;
+      padding-bottom: 1px;
+      padding-left: 5px;
+      padding-right: 5px;
+      z-index: 1;
+      transition: all .2s ease-out;
+    }
+
+    .button:hover {
+      background-color: #48dbfb;
+    }
+
+    label:hover {
+      background-color: #48dbfb;
+    }
+
+    .button:active {
+      background-color: #ff9ff3;
+    }
+
+    .label:active {
+      background-color: #ff9ff3;
+    }
+
+    .inputfile {
+      z-index: 20;
       opacity: 0;
-      position: absolute;
-      right: 0;
-      text-align: right;
-      top: 0;
     }
 
-    /* input[type="button"] {
-      border: 1;
-      background-color: ivory;
-    } */
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+      outline: none;
+    }

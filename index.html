@@ -20,17 +20,18 @@
       <div style="float:left">
         <input type='button' class="button" id="saveButton" value="Save" onclick="save()">
         <input type='button' class="button" id='layOutButton' value="Do Layout" onclick="layout()">
-        <button class="button">
-          Open
-          <input type="file" id='fileinput' onchange="loadFile()">
-        </button>
+        <input type='file' class="inputfile" id="fileInput" name="fileInput" onchange="loadFile()">
+        <label class="inputlabel" for="fileInput">Open</label>
       </div>
+      <!-- <div class="input-file">
+        <label for="file">Open</label>
+        <input type="file" name="file" id="file" />
+      </div> -->
+      <br />
     </div>
-    <br />
-  </div>
 
-  <script src="library/go.js"></script>
-  <script src="js/diagram.js"></script>
+    <script src="library/go.js"></script>
+    <script src="js/diagram.js"></script>
 </body>
 
 </html>

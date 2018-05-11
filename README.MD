@@ -25,5 +25,4 @@ https://rawgit.com/justKD/powerup-scenario-planner/master/index.html
 
 - Clicking "Save" will download a file to your downloads folder.
     - It's just a text file storing the JSON information for your current workspace
-- To load a file, click "Choose File" to open a finder and select the appropriate text file.
-- Then click "Load"
+- To load a file, click "Open" to open a finder and select the appropriate text file.
