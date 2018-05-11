@@ -4,6 +4,9 @@ Live Demo:
 
 https://rawgit.com/justKD/powerup-scenario-planner/master/index.html
 
+
+![alt text](https://raw.githubusercontent.com/justKD/powerup-scenario-planner/master/example.png)
+
 ## Basic Use
 
 - Click the + icon to add a new child node
