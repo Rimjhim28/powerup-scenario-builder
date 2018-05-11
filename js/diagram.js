@@ -419,6 +419,7 @@ function init() {
                 lastAnswerID++;
             }
 
+            // set fields for new Answer
             fields = [{
                     name: "AnswerID",
                     info: aID
@@ -442,10 +443,13 @@ function init() {
             ];
         } else {
             category = "Question";
+
             // check if the answer already has a question, and only allow 1 question per answer
-            for (let i in fromNode.linksConnected.Ac.n) {
-                if (fromNode.linksConnected.Ac.n[i].fromNode == fromNode) {
-                    return;
+            if (fromNode.linksConnected.Ac) {
+                for (let i in fromNode.linksConnected.Ac.n) {
+                    if (fromNode.linksConnected.Ac.n[i].fromNode == fromNode) {
+                        return;
+                    }
                 }
             }
 
@@ -459,11 +463,13 @@ function init() {
                 lastQuestionID++;
             }
 
+            // set fields for new question
             fields = [{
                 name: "QuestionID",
                 info: qID
             }];
 
+            // update fields for from Answer
             let updatefields = [{
                     name: "AnswerID",
                     info: fromData.fields[0].info
@@ -620,7 +626,7 @@ function init() {
             value = false;
         }
 
-        // check if the answer already has a question, and only allow 1 question per answer
+        // check if the answer already has links, only allow 1 to and from per answer
         if (fromnode.data.category == "Answer") {
             if (fromnode.linksConnected.count > 0) {
                 for (let i in fromnode.linksConnected.Ac.n) {
@@ -645,15 +651,12 @@ function init() {
     ltool.linkValidation = sameCategory;
 
     diagram.addDiagramListener("SelectionDeleted", function (e) {
-        console.log(e.subject.Ea.key.data);
         let data = e.subject.Ea.key.data;
         if (data.category == "Answer") {
             deletedAnswers.push(data.fields[0].info);
-            console.log(deletedAnswers);
         }
         if (data.category == "Question") {
             deletedQuestions.push(data.fields[0].info);
-            console.log(deletedQuestions);
         }
     });
 
@@ -672,8 +675,8 @@ function init() {
         let fromData = fromNode.data;
         let toData = toNode.data;
 
+        // update Answer fields when linking to a new question
         if (fromData.category == "Answer") {
-
             let updatefields = [{
                     name: "AnswerID",
                     info: fromData.fields[0].info
@@ -700,7 +703,7 @@ function init() {
             model.setDataProperty(fromData, "fields", updatefields);
             model.commitTransaction("updateNextQID");
         } else if (fromData.category == "Start" || fromData.category == "Question") {
-
+            // update answer fields when linking from a new question
             let updatefields = [{
                     name: "AnswerID",
                     info: toData.fields[0].info
@@ -758,14 +761,6 @@ function init() {
         });
     }
 
-    // prevent nodes from being dragged to the left of where the layout placed them
-    // diagram.addDiagramListener("LayoutCompleted", function (e) {
-    //     diagram.nodes.each(function (node) {
-    //         if (node.category === "Recycle") return;
-    //         node.minLocation = new go.Point(node.location.x, -Infinity);
-    //     });
-    // });
-
     initialLoad(); // load initial diagram
     load();
     layout();
@@ -774,8 +769,15 @@ function init() {
 let model;
 function save() {
     model = diagram.model.toJson();
-    document.getElementById("savedModelDiv").value = model;
     diagram.isModified = false;
+
+    let data = {
+        model: model,
+        lastQuestionID: lastQuestionID,
+        lastAnswerID: lastAnswerID,
+        deletedQuestions: deletedQuestions,
+        deletedAnswers: deletedAnswers
+    }
 
     function download(content, fileName, contentType) {
         var a = document.createElement("a");
@@ -786,7 +788,7 @@ function save() {
         a.download = fileName;
         a.click();
     }
-    download(model, 'powerup-map-json.txt', 'text/plain');
+    download(JSON.stringify(data), 'powerup-map-json.txt', 'text/plain');
 }
 
 function loadFile() {
@@ -813,16 +815,17 @@ function loadFile() {
 
     function receivedText(e) {
         let lines = e.target.result;
-        var newArr = JSON.parse(lines);
-        model = newArr;
+        let data = JSON.parse(lines);
+        model = data.model;
+        lastQuestionID = data.lastQuestionID;
+        lastAnswerID = data.lastAnswerID;
+        deletedQuestions = data.deletedQuestions;
+        deletedAnswers = data.deletedAnswers;
         load();
     }
 }
 
 function load() {
-    //diagram.model = go.Model.fromJson(document.getElementById("savedModelDiv").value);
-    document.getElementById("savedModelDiv").value = JSON.stringify(model);
-
     diagram.clear()
     diagram.model = go.Model.fromJson(model);
 
@@ -873,7 +876,6 @@ function initialLoad() {
         }],
         "linkDataArray": []
     }
-    document.getElementById("savedModelDiv").value = JSON.stringify(model, null, "\t");
 }
 
 // Define a custom tool that changes a drag operation on a Link to a relinking operation,
