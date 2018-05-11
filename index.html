@@ -14,17 +14,18 @@
 <body onload="init()">
 
   <div id="sample">
-    Scenario Builder
+    <div id="title">Scenario Builder</div>
     <div id="diagramDiv"></div>
-    <div style="float:left">
-      <input type='button' id="saveButton" value="Save" onclick="save()">
-      <input type='button' id='layOutButton' value="Do Layout" onclick="layout()">
+    <div id="toolbar">
+      <div style="float:left">
+        <input type='button' class="button" id="saveButton" value="Save" onclick="save()">
+        <input type='button' class="button" id='layOutButton' value="Do Layout" onclick="layout()">
+        <button class="button">
+          Open
+          <input type="file" id='fileinput' onchange="loadFile()">
+        </button>
+      </div>
     </div>
-    <div style="float:right">
-      <input type='button' id='loadButton' value='Load' onclick='loadFile();'>
-      <input type='file' id='fileinput' onchange="loadFile()">
-    </div>
-
     <br />
   </div>
 
