@@ -1,9 +1,23 @@
     @import url('https://fonts.googleapis.com/css?family=Lato');
+    
     body {
       font-family: 'Lato', Arial, Helvetica, sans-serif;
     }
 
     @media only screen and (max-width: 480px) {}
+
+    html {
+      overflow: scroll;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
 
     #diagramDiv {
       width: 100%;
