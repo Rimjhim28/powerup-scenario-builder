@@ -14,7 +14,7 @@ https://rawgit.com/justKD/powerup-scenario-planner/master/index.html
 - Hitting enter starts a new line, click off of the text box to close the editor and save the value
 - Italicized text are the property names and can not be edited 
 - Delete a node or link by selecting it and hitting your delete key
-- Select and drag a node to move it around
+- Select and drag a record to move it around
 - The "Do Layout" button at the bottom will automatically restructure the visual map
 
 ## Linking
@@ -25,6 +25,8 @@ https://rawgit.com/justKD/powerup-scenario-planner/master/index.html
         - Delete any existing links before attempting to re-link
     - Questions can have multiple entry points and multiple answers
     - Links can not be made if it would create a potential infinite loop
+- Creating a link will automatically update the appropriate QuestionID and NextQID properties of adjacent records.
+    - Manually edit those values at your own risk.
 
 ## Save and Load
 
