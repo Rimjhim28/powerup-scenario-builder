@@ -799,7 +799,7 @@ function loadFile() {
         return;
     }
 
-    input = document.getElementById('fileinput');
+    input = document.getElementById('fileInput');
     if (!input) {
         alert("Um, couldn't find the fileinput element.");
     } else if (!input.files) {
