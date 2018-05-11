@@ -7,6 +7,12 @@ https://rawgit.com/justKD/powerup-scenario-planner/master/index.html
 
 ![alt text](https://raw.githubusercontent.com/justKD/powerup-scenario-planner/master/example.png)
 
+## Intro
+
+Each panel represents a record in the PowerUp Q&A database. This tool is 
+designed to correlate with those tables. Green panels represent Questions,
+and purple panels represent Answers.
+
 ## Basic Use
 
 - Click the + icon to add a new child node
@@ -25,7 +31,8 @@ https://rawgit.com/justKD/powerup-scenario-planner/master/index.html
         - Delete any existing links before attempting to re-link
     - Questions can have multiple entry points and multiple answers
     - Links can not be made if it would create a potential infinite loop
-- Creating a link will automatically update the appropriate QuestionID and NextQID properties of adjacent records.
+- Creating a link will automatically update the appropriate QuestionID and NextQID 
+properties of adjacent records.
     - Manually edit those values at your own risk.
 
 ## Save and Load
