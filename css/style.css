@@ -54,17 +54,6 @@
       transition: all .2s ease-out;
     }
 
-    @-moz-document url-prefix() {
-      .inputlabel {
-        left: -212px !important;
-        padding-bottom: 0px;
-        top: 1px;
-      }
-      .button {
-        padding-bottom: 1px;
-      }
-    }
-
     .button:hover {
       background-color: #48dbfb;
     }
