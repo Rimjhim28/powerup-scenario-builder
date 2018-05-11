@@ -16,13 +16,16 @@
   <div id="sample">
     Scenario Builder
     <div id="diagramDiv"></div>
-    <button id="SaveButton" onclick="save()">Save</button>
-    <button onclick="layout()">Do Layout</button>
-    <!-- <button onclick="load()">Load</button> -->
-    <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
-    <input type='file' id='fileinput'>
+    <div style="float:left">
+      <input type='button' id="saveButton" value="Save" onclick="save()">
+      <input type='button' id='layOutButton' value="Do Layout" onclick="layout()">
+    </div>
+    <div style="float:right">
+      <input type='button' id='loadButton' value='Load' onclick='loadFile();'>
+      <input type='file' id='fileinput' onchange="loadFile()">
+    </div>
+
     <br />
-    <textarea id="savedModelDiv" style="display: none"></textarea>
   </div>
 
   <script src="library/go.js"></script>
