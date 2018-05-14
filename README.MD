@@ -35,8 +35,9 @@ and purple panels represent Answers.
 properties of adjacent records.
     - Manually edit those values at your own risk.
 
-## Save and Load
+## Save, Load, Export
 
 - Clicking "Save" will download a file to your downloads folder.
     - It's just a text file storing the JSON information for your current workspace
 - To load a file, click "Open" to open a finder and select the appropriate text file.
+- Clicking either export button will download a CSV ready to be used with PowerUp.

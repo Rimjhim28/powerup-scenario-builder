@@ -20,6 +20,8 @@
       <div style="float:left">
         <input type='button' class="button" id="saveButton" value="Save" onclick="save()">
         <input type='button' class="button" id='layOutButton' value="Do Layout" onclick="layout()">
+        <input type='button' class="button" id='exportAnButton' value="Export Answers" onclick="exportCSV(0)">
+        <input type='button' class="button" id='exportQuButton' value="Export Questions" onclick="exportCSV(1)">
         <input type='file' class="inputfile" id="fileInput" name="fileInput" onchange="loadFile()">
         <label class="inputlabel" for="fileInput">Open</label>
       </div>
@@ -31,6 +33,7 @@
     </div>
 
     <script src="library/go.js"></script>
+    <script src="js/toolbar.js"></script>
     <script src="js/diagram.js"></script>
 </body>
 
