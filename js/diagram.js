@@ -397,6 +397,7 @@ function init() {
             )
         ));
 
+
     // this is a click event handler that adds a node and a link to the diagram,
     // connecting with the node on which the click occurred
     function addNodeAndLink(e, obj) {
@@ -406,9 +407,27 @@ function init() {
         // get the node data for which the user clicked the button
         var fromData = fromNode.data;
 
+        let updatemodel = diagram.model;
         let category, fields;
-
+        model = diagram.model.toJson();
+        let j = JSON.parse(model).nodeDataArray;
+        let sID = j[0].fields[1].info;
+        let baseID = sID * 1000;
         if (fromData.category == "Start" || fromData.category == "Question") {
+
+            if (fromData.category == "Start") {
+                let startFields = [{
+                    name: "QuestionID",
+                    info: baseID + 1
+                }, {
+                    name: "ScenarioID",
+                    info: fromData.fields[1].info
+                }];
+                updatemodel.startTransaction("updateStartingID");
+                updatemodel.setDataProperty(fromData, "fields", startFields);
+                updatemodel.commitTransaction("updateStartingID");
+            }
+
             category = "Answer";
             let aID = lastAnswerID + 1;
 
@@ -423,7 +442,7 @@ function init() {
             // set fields for new Answer
             fields = [{
                     name: "AnswerID",
-                    info: aID
+                    info: aID + baseID
                 },
                 {
                     name: "QuestionID",
@@ -467,7 +486,7 @@ function init() {
             // set fields for new question
             fields = [{
                 name: "QuestionID",
-                info: qID
+                info: qID + baseID
             }];
 
             // update fields for from Answer
@@ -481,7 +500,7 @@ function init() {
                 },
                 {
                     name: "NextQID",
-                    info: qID
+                    info: qID + baseID
                 },
                 {
                     name: "PopupID",
@@ -493,10 +512,9 @@ function init() {
                 }
             ];
 
-            var model = diagram.model;
-            model.startTransaction("updateNextQID");
-            model.setDataProperty(fromData, "fields", updatefields);
-            model.commitTransaction("updateNextQID");
+            updatemodel.startTransaction("updateNextQID");
+            updatemodel.setDataProperty(fromData, "fields", updatefields);
+            updatemodel.commitTransaction("updateNextQID");
         }
         // create a new "State" data object, positioned off to the right of the fromNode
         var p = fromNode.location.copy();
@@ -675,6 +693,7 @@ function init() {
         let toNode = e.subject.toNode;
         let fromData = fromNode.data;
         let toData = toNode.data;
+        let updatemodel = diagram.model;
 
         // update Answer fields when linking to a new question
         if (fromData.category == "Answer") {
@@ -699,10 +718,10 @@ function init() {
                     info: fromData.fields[4].info
                 }
             ];
-            var model = diagram.model;
-            model.startTransaction("updateNextQID");
-            model.setDataProperty(fromData, "fields", updatefields);
-            model.commitTransaction("updateNextQID");
+
+            updatemodel.startTransaction("updateNextQID");
+            updatemodel.setDataProperty(fromData, "fields", updatefields);
+            updatemodel.commitTransaction("updateNextQID");
         } else if (fromData.category == "Start" || fromData.category == "Question") {
             // update answer fields when linking from a new question
             let updatefields = [{
@@ -726,10 +745,10 @@ function init() {
                     info: toData.fields[4].info
                 }
             ];
-            var model = diagram.model;
-            model.startTransaction("updateNextQID");
-            model.setDataProperty(toData, "fields", updatefields);
-            model.commitTransaction("updateNextQID");
+
+            updatemodel.startTransaction("updateNextQID");
+            updatemodel.setDataProperty(toData, "fields", updatefields);
+            updatemodel.commitTransaction("updateNextQID");
         }
     }
 

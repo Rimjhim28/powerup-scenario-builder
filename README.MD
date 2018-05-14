@@ -23,6 +23,11 @@ and purple panels represent Answers.
 - Select and drag a record to move it around
 - The "Do Layout" button at the bottom will automatically restructure the visual map
 
+- While it's possible to set the lower text fields to any text, you should match the data to what PowerUp expects:
+    - Most fields require an integer.
+    - An answer field that ends the scenario must be a negative integer if it should start a minigame
+    - or a non-integer character (currently "$") to go directly to the clear screen
+
 ## Linking
 
 - Creating a new node automatically links the parent to child
@@ -41,3 +46,9 @@ properties of adjacent records.
     - It's just a text file storing the JSON information for your current workspace
 - To load a file, click "Open" to open a finder and select the appropriate text file.
 - Clicking either export button will download a CSV ready to be used with PowerUp.
+
+## Notable Changes
+
+- Instead of listing question and answer IDs sequentially, this tool assigns an ID range beginning with 1000 * the scenario ID assigned in the starting question. This will help make the database more human-readable, and also allows us to expand the scenarios without having to re-number everything or introduce unnecessary confusion.
+    - Simply assign the Scenario ID in the starting question and click to add the first node. As long as you do not change the scenario ID again, this tool will handle the rest.
+- This tool will not allow links that could create potential infinite loops.
