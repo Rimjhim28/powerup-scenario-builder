@@ -52,3 +52,11 @@ properties of adjacent records.
 - Instead of listing question and answer IDs sequentially, this tool assigns an ID range beginning with 1000 * the scenario ID assigned in the starting question. This will help make the database more human-readable, and also allows us to expand the scenarios without having to re-number everything or introduce unnecessary confusion.
     - Simply assign the Scenario ID in the starting question and click to add the first node. As long as you do not change the scenario ID again, this tool will handle the rest.
 - This tool will not allow links that could create potential infinite loops.
+
+## Example Data
+
+- The example-data folder contains 2 text files that can be loaded using the Open button.
+    - One is just generic test data
+- One is a recreation of the current Scenario 5 data
+    - Only exception is that an infinite loop in question 105 has been removed.
+- The included CSV files were exported from that same data to show the results from this tool match the current schema of the database.
