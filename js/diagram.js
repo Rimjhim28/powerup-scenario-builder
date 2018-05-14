@@ -11,6 +11,8 @@ function init() {
         $(go.Diagram, "diagramDiv", {
             allowCopy: false,
             initialContentAlignment: go.Spot.Center,
+            initialDocumentSpot: go.Spot.Center,
+            initialViewportSpot: go.Spot.Center,
             layout: $(go.LayeredDigraphLayout, {
                 setsPortSpots: false, // Links already know their fromSpot and toSpot
                 columnSpacing: 50,
@@ -20,7 +22,7 @@ function init() {
             }),
             validCycle: go.Diagram.CycleNotDirected,
             "undoManager.isEnabled": true,
-            padding: 200
+            padding: 1000
         });
 
     let fieldTemplate =
