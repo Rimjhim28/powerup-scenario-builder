@@ -22,6 +22,8 @@ and purple panels represent Answers.
 - Delete a node or link by selecting it and hitting your delete key
 - Select and drag a record to move it around
 - The "Do Layout" button at the bottom will automatically restructure the visual map
+- Pinch-to-zoom on touchpad
+- Using a mouse, middle click to toggle between vertical scroll mode and zoom mode
 
 - While it's possible to set the lower text fields to any text, you should match the data to what PowerUp expects:
     - Most fields require an integer.
