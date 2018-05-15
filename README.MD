@@ -16,7 +16,8 @@ and purple panels represent Answers.
 ## Basic Use
 
 - Click the + icon to add a new child node
-- Double-click on text to edit
+- Double-click on non-italicized text to edit
+    - Text in italics are field names and can not be changed
 - Hitting enter starts a new line, click off of the text box to close the editor and save the value
 - Italicized text are the property names and can not be edited 
 - Delete a node or link by selecting it and hitting your delete key
